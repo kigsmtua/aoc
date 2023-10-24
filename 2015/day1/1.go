@@ -12,10 +12,11 @@ func main() {
 		fmt.Println("unable to open file, please specify correct file location")
 	}
 	fmt.Printf("The answer for question 1 is %d \n", question1(string(data)))
-	fmt.Printf("The answer for question 2 is %d \n", question2(string(data)))
+	fmt.Printf("The answer for question 2 is %d 	\n", question2(string(data)))
 
 }
 
+// question 1
 func question1(positions string) int {
 	currentFloor := 0
 	for _, char := range positions {
@@ -27,6 +28,8 @@ func question1(positions string) int {
 	}
 	return currentFloor
 }
+
+// question 2
 func question2(positions string) int {
 	currentFloor := 0
 	baseMentPosition := 0
