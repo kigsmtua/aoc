@@ -1,7 +1,45 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	//Lets read the entire file into memory anyway
+	data, err := os.ReadFile("input.txt")
+	if err != nil {
+		fmt.Println("unable to open file, please specify correct file location")
+	}
+	fmt.Printf("The answer for question 1 is %d \n", question1(string(data)))
+	fmt.Printf("The answer for question 2 is %d \n", question2(string(data)))
+
+}
+
+func question1(positions string) int {
+	currentFloor := 0
+	for _, char := range positions {
+		if char == '(' {
+			currentFloor = currentFloor + 1
+		} else {
+			currentFloor = currentFloor - 1
+		}
+	}
+	return currentFloor
+}
+func question2(positions string) int {
+	currentFloor := 0
+	baseMentPosition := 0
+	for pos, char := range positions {
+		if char == '(' {
+			currentFloor = currentFloor + 1
+		} else {
+			currentFloor = currentFloor - 1
+		}
+		if currentFloor == -1 {
+			baseMentPosition = pos + 1
+			break
+		}
+	}
+	return baseMentPosition
 }
