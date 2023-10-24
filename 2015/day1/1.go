@@ -17,9 +17,9 @@ func main() {
 }
 
 // question 1
-func question1(positions string) int {
+func question1(input string) int {
 	currentFloor := 0
-	for _, char := range positions {
+	for _, char := range input {
 		if char == '(' {
 			currentFloor = currentFloor + 1
 		} else {
@@ -30,10 +30,10 @@ func question1(positions string) int {
 }
 
 // question 2
-func question2(positions string) int {
+func question2(input string) int {
 	currentFloor := 0
 	baseMentPosition := 0
-	for pos, char := range positions {
+	for pos, char := range input {
 		if char == '(' {
 			currentFloor = currentFloor + 1
 		} else {
