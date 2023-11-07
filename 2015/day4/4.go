@@ -9,15 +9,16 @@ import (
 )
 
 func main() {
-	fmt.Println(mineAdventCoins("bgvyzdsv"))
+	fmt.Println(mineAdventCoins("bgvyzdsv", 5))
+	fmt.Println(mineAdventCoins("bgvyzdsv", 6))
 }
 
-func mineAdventCoins(input string) int {
+func mineAdventCoins(input string, nums int) int {
 	number := 1
 	magicInput := input
 	for {
 		md5hash := getMD5Hash(magicInput + strconv.Itoa(number))
-		if startsWithFiveZeros(md5hash) {
+		if startsWithXZeros(md5hash, nums) {
 			break
 		}
 		number += 1
@@ -26,8 +27,8 @@ func mineAdventCoins(input string) int {
 }
 
 // We check if the string has 5 preciding zeros
-func startsWithFiveZeros(s string) bool {
-	prefix := "00000"
+func startsWithXZeros(s string, nums int) bool {
+	prefix := strings.Repeat("0", nums)
 	return strings.HasPrefix(s, prefix)
 }
 
